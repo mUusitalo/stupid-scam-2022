@@ -1,32 +1,30 @@
 import useField from "../hooks/useField"
 import { Link } from "react-router-dom";
-
+import { FormControl, Button, TextField, Card, CardContent } from "@mui/material";
 
 const Homepage = ({}) => {
   const serviceField = useField('text')
   const emailField = useField('text')
 
-  const onSubmit = () => {
-
-  }
-
   return (
-      <div>
-        <h1 className="font-bold">Password recovery tool</h1>
-        <form>
-          <label>
-            <p className="">service name</p>
-            <input {...serviceField} />
-          </label>
-          <label>
-            <p>email</p>
-            <input {...emailField} />
-          </label>
-          <Link to={{pathname: '/mail', search: `email=${emailField.value}`}}>
-            <button>Recover password</button>
-          </Link>
-        </form>
-        
+      <div className="p-10">
+        <Card>
+          <CardContent>
+            <h1 className="font-bold">Password recovery tool</h1>
+            <p className=""> Send yourself a scam email. phishing! Just enter the service and your email you want to have access to, we'll do the rest. Have you forgotten your password?</p>
+            <TextField
+              label="Service name"
+              {...serviceField}
+            />
+            <TextField
+              label="Your email"
+              {...emailField}
+            />
+            <Button component={Link} to={{pathname: '/mail', search: `email=${emailField.value}`}}>
+                Send new password
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     )
 }

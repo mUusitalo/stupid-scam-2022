@@ -1,4 +1,7 @@
 import faker from '@faker-js/faker'
+import { Link } from 'react-router-dom'
+import { Button } from '@mui/material'
+
 import useField from "../hooks/useField"
 import generateRandomMessage from '../utilities/generateRandomMessage'
 
@@ -16,7 +19,9 @@ const EndPage = ({}) => {
       </label>
       <label>
         <p>Forgot it again? Too bad</p>
-        <button type="submit">Try again</button>
+        <Button component={Link} to={{pathname: '/'}}>
+          Try again
+        </Button>
       </label>
     </div>
   )
