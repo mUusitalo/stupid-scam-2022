@@ -1,24 +1,21 @@
-import logo from './logo.svg';
 import './App.css';
+import { Route, BrowserRouter, Routes } from "react-router-dom";
+
+import Homepage from './components/Homepage'
+import FakeLogin from './components/FakeLogin'
+import EndPage from './components/EndPage';
+import Email from './components/Email';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route element={<Homepage />} path='/' />
+        <Route element={<FakeLogin />} path='/login' />
+        <Route element={<Email />} path='/mail' />
+        <Route element={<EndPage />} path='/congratulations' />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
