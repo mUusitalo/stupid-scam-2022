@@ -1,4 +1,5 @@
 import useField from "../hooks/useField"
+import { FormControl, Button, TextField, Card, CardContent } from "@mui/material";
 import { Link, useSearchParams } from 'react-router-dom';
 
 const FakeLogin = ({}) => {
@@ -13,23 +14,24 @@ const FakeLogin = ({}) => {
       <div>
         <h1>Log In</h1>
         <h2>app name here</h2>
-        <form>
-            <fieldset>
-                <label>
-                    email:
-                    <input {...emailField} />
-                </label>
+        <Card>
+          <CardContent>
+            <h1 className="font-bold">Password recovery tool</h1>
+            <TextField
+              label="email"
+              {...emailField}
+            />
 
-                <label>
-                    password:
-                    <input {...passwordField} />
-                </label>
-            </fieldset>
-            <Link to={{pathname: '/congratulations', search: `email=${emailField.value}`}}>
+            <TextField
+              label="password"
+              {...passwordField}
+            />
+
+            <Button component={Link} to={{pathname: '/congratulations', search: `email=${emailField.value}`}}>
                 <button type="submit">Log In</button>
-            </Link>
-            
-        </form>
+            </Button>
+          </CardContent>
+        </Card>
       </div>
     )
 }

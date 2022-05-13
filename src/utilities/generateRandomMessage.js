@@ -44,14 +44,14 @@ const loppu = [
   'You will regret if you do not click the button below. I will not give you a second chance. But do not worry my friend. Just do as I say, and follow my facebook.',
 ]
 
-function getRandomMessage() {
+function generateRandomMessage({email, service}) {
   const name = faker.name.findName()
   const title = faker.helpers.arrayElement(otsikko)
   const introduction = faker.helpers.arrayElement(alku)
   const bodyText = generateBodyText(name)
   const signOff = faker.helpers.arrayElement(loppu)
-  const ending = `Please follow the link below to update your password. Thank you, your friend ${name}, ${faker.name.suffix()}`
+  const ending = `Please follow the link below to give your contact information and password to ${service}. Thank you, your friend ${name}, ${faker.name.suffix()}`
   return { introduction, bodyText, signOff, ending, title }
 }
 
-export default getRandomMessage
+export default generateRandomMessage
