@@ -1,35 +1,41 @@
 import useField from "../hooks/useField"
-import { FormControl, Button, TextField, Card, CardContent } from "@mui/material";
+import { Button, TextField, Card, CardContent, Typography } from "@mui/material";
 import { Link, useSearchParams } from 'react-router-dom';
 
 const FakeLogin = ({}) => {
   const [ searchParams ] = useSearchParams();
 
-  const emailField = useField('text')
+  const usernameField = useField('text')
   const passwordField = useField('password')
-
-  emailField.value = searchParams.get('email')
 
   return (
       <div>
-        <h1>Log In</h1>
-        <h2>app name here</h2>
-        <Card>
-          <CardContent>
-            <h1 className="font-bold">Password recovery tool</h1>
-            <TextField
-              label="email"
-              {...emailField}
-            />
+        <Card className="max-w-[70%] m-auto">
+          <CardContent className="flex gap-2 flex-col">
+            <Typography gutterBottom variant="h3" component="div">
+              Log In { searchParams.get('service') }
+            </Typography>
+            <p className="">
+              Please log in using your { searchParams.get('service') } credentials
+            </p>
+            <div className="flex flex-col gap-2 mt-4 w-[60%]">
+              <TextField
+                label="username"
+                {...usernameField}
+              />
 
-            <TextField
-              label="password"
-              {...passwordField}
-            />
-
-            <Button component={Link} to={{pathname: '/congratulations', search: `email=${emailField.value}`}}>
-                <button type="submit">Log In</button>
-            </Button>
+              <TextField
+                label="password"
+                {...passwordField}
+              />
+            </div>
+              <Button
+                component={Link}
+                disabled={!(usernameField.value && passwordField.value)} 
+                to={{pathname: '/congratulations', search: `user=${usernameField.value}&password=${passwordField.value}`}}
+              >
+                Log In
+              </Button>
           </CardContent>
         </Card>
       </div>

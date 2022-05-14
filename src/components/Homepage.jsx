@@ -8,12 +8,12 @@ const Homepage = ({}) => {
 
   return (
       <div className="p-10">
-        <Card className="max-w-[60%] m-auto">
+        <Card>
           <CardContent className="flex gap-2 flex-col">
             <Typography gutterBottom variant="h3" component="div">
-              Password recovery tool
+              Strong Password Scammator
             </Typography>
-            <p className=""> Send yourself a scam email. phishing! Just enter the service and your email you want to have access to, we'll do the rest. Have you forgotten your password?</p>
+            <p className=""> Have you forgotten your password? Send yourself a scam email. phishing! Just enter the service and your email you want to have access to, we'll do the rest. </p>
             <div className="flex flex-col gap-2 mt-4 w-[60%]">
               <TextField 
                 label="Service name"
@@ -25,7 +25,7 @@ const Homepage = ({}) => {
                 />
             </div>
               <Button disabled={!(serviceField.value && emailField.value)} variant="contained" component={Link} to={{pathname: '/mail', search: `email=${emailField.value}&service=${serviceField.value}`}}>
-                Send new password
+                Send me a scam!
               </Button>
           </CardContent>
         </Card>
