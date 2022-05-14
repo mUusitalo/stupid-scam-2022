@@ -33,18 +33,19 @@ const EndPage = ({}) => {
             <Typography gutterBottom variant="h5" component="div">
               Congratulations!
             </Typography>
-            <p className="">I remembered your password. It is:</p>
+            <p className="">I remembered your password. {visible && 'It is:'}</p>
             {
-              visible &&
-              <div className="flex flex-col gap-2 mt-4 w-[60%]">
-                <p> {searchParams.get('password')}</p>
-                <Spinner value={progress} />
-              </div>
+            visible
+              ?
+                <div className="flex flex-col gap-2 mt-4 w-[60%]">
+                  <p> {searchParams.get('password')}</p>
+                  <Spinner value={progress} />
+                </div>
+              :
+                <Button onClick={() => setDialogVisibility(true)}>
+                  I forgot it again
+                </Button>
             }
-
-            <Button onClick={() => setDialogVisibility(true)}>
-              I forgot it again
-            </Button>
           </CardContent>
         </Card>
 
@@ -55,7 +56,7 @@ const EndPage = ({}) => {
           aria-describedby="alert-dialog-description"
         >
           <DialogTitle>
-            {"Yor passwod has been changed"}
+            <p>We changed your password for you!</p>
           </DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -64,7 +65,7 @@ const EndPage = ({}) => {
             </DialogContentText>
           </DialogContent>
           <DialogActions>
-            <Button onClick={() => setDialogVisibility(false)} autoFocus>
+            <Button component={Link} to={{pathname: '/'}} autoFocus>
               Agree
             </Button>
           </DialogActions>
